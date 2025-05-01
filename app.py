@@ -16,7 +16,7 @@ try:
         raise ValueError("GEMINI_API_KEY not found in environment variables.")
     genai.configure(api_key=api_key)
     # Use gemini-1.0-pro for potentially better performance/features
-    model = genai.GenerativeModel('gemini-1.0-pro-latest')
+    model = genai.GenerativeModel('gemini-1.5-flash')
 except Exception as e:
     print(f"Error configuring Gemini: {e}")
     # Handle this more gracefully in a real app (e.g., disable generation)
