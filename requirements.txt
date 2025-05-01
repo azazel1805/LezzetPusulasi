@@ -1,0 +1,4 @@
+Flask>=2.0
+google-generativeai>=0.3 # Or the latest version
+python-dotenv>=0.19
+gunicorn>=20.0          # For deployment on Render

@@ -1,0 +1,189 @@
+/* Basic Reset & Body Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 15px;
+    max-width: 800px; /* Limit width for better readability on large screens */
+    margin: 0 auto; /* Center content */
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border-radius: 8px;
+}
+
+header h1 {
+    margin-bottom: 5px;
+}
+
+/* Main Content & Form */
+main {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease-in-out;
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 60px;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+button[type="submit"], button#save-recipe, button#clear-saved-recipes {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 10px; /* Add some space above button */
+}
+
+button[type="submit"]:hover, button#save-recipe:hover, button#clear-saved-recipes:hover {
+    background-color: #45a049; /* Darker green */
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Messages and Results */
+.message {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.error {
+    background-color: #ffdddd;
+    border: 1px solid #f44336;
+    color: #d32f2f;
+}
+
+#result-area {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.recipe-card {
+    background-color: #fdfdfd;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.recipe-card h3 {
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+
+.recipe-card h4 {
+    margin-top: 15px;
+    margin-bottom: 8px;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 3px;
+}
+
+.recipe-card ul {
+    list-style: none; /* Remove default bullets */
+    padding-left: 0;
+}
+
+.recipe-card ul li {
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 20px; /* Space for custom bullet */
+}
+.recipe-card ul li::before {
+    content: "🍳"; /* Custom bullet */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 0.9em;
+}
+
+.recipe-card p {
+    color: #444;
+}
+
+#saved-recipes-area {
+     margin-top: 30px;
+     padding-top: 20px;
+     border-top: 1px solid #eee;
+}
+
+#saved-recipes-list div {
+    background-color: #f0f0f0;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+#saved-recipes-list div:hover {
+     background-color: #e0e0e0;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    color: #777;
+    font-size: 0.9em;
+}

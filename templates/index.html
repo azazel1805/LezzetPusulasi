@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4CAF50"> <!-- PWA Theme Color -->
+    <title>Yöresel Lezzet Reçetesi Yaratıcısı</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/icon-192x192.png') }}"> <!-- Basic iOS support -->
+    <style>
+        /* Basic Loading Spinner CSS */
+        .loader {
+            border: 5px solid #f3f3f3; /* Light grey */
+            border-top: 5px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🍲 Yöresel Lezzet Pusulası 🧭</h1>
+        <p>Evinizdeki malzemelerle hangi yöresel tarifi yapabileceğinizi keşfedin!</p>
+    </header>
+
+    <main>
+        <form id="recipe-form">
+            <div class="form-group">
+                <label for="ingredients">Malzemeleriniz (virgülle ayırın):</label>
+                <textarea id="ingredients" name="ingredients" rows="3" required placeholder="Örn: domates, biber, soğan, patlıcan, kıyma"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="region">Hangi Bölge Mutfağı?</label>
+                <select id="region" name="region" required>
+                    <option value="" disabled selected>-- Bölge Seçiniz --</option>
+                    {% for region_name in regions %}
+                        <option value="{{ region_name }}">{{ region_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" id="submit-button">✨ Tarif Oluştur</button>
+        </form>
+
+        <div id="loading" style="display: none;">
+            <div class="loader"></div>
+            <p style="text-align: center;">Lezzetli bir tarif hazırlanıyor...</p>
+        </div>
+
+        <div id="error-message" class="message error" style="display: none;"></div>
+
+        <section id="result-area" aria-live="polite" style="display: none;">
+            <h2>İşte Size Özel Tarif!</h2>
+            <article class="recipe-card">
+                <h3 id="recipe-title"></h3>
+                <h4>Gereken Malzemeler:</h4>
+                <ul id="recipe-ingredients">
+                    <!-- Ingredient list items will be added here -->
+                </ul>
+                <h4>Hazırlanışı:</h4>
+                <p id="recipe-instructions" style="white-space: pre-wrap;"></p> <!-- pre-wrap preserves line breaks -->
+                <h4>Bölgesel Not:</h4>
+                <p id="recipe-note"></p>
+            </article>
+             <button id="save-recipe" style="margin-top: 15px; display: none;">Tarifi Kaydet (Offline)</button>
+             <p id="save-status" style="font-size: 0.9em; margin-top: 5px;"></p>
+        </section>
+
+         <section id="saved-recipes-area">
+             <h2>Kaydedilen Tarifler (Offline)</h2>
+             <div id="saved-recipes-list">
+                 <p>Henüz kaydedilmiş tarif yok.</p>
+             </div>
+             <button id="clear-saved-recipes" style="margin-top: 10px; display: none;">Tüm Kayıtlı Tarifleri Sil</button>
+         </section>
+
+    </main>
+
+    <footer>
+        <p>AI Destekli Tarif Üretici - Gemini API ile güçlendirilmiştir.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
